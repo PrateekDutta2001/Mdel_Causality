@@ -1,0 +1,55 @@
+services:
+  qdrant:
+    image: qdrant/qdrant:v1.12.5
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - qdrant_data:/qdrant/storage
+    networks:
+      - agentic-net
+
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.18.0
+    command: >
+      mlflow server
+      --host 0.0.0.0
+      --port 5000
+      --backend-store-uri sqlite:///mlflow/mlflow.db
+      --default-artifact-root /mlflow/artifacts
+    ports:
+      - "5000:5000"
+    volumes:
+      - mlflow_data:/mlflow
+    networks:
+      - agentic-net
+
+  api:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      QDRANT_URL: http://qdrant:6333
+      MLFLOW_TRACKING_URI: http://mlflow:5000
+      LLM_PROVIDER: ${LLM_PROVIDER:-openai}
+      EMBEDDING_BACKEND: sentence-transformers
+      LOG_LEVEL: INFO
+    env_file:
+      - ../.env
+    depends_on:
+      - qdrant
+      - mlflow
+    volumes:
+      - ../data:/app/data
+    networks:
+      - agentic-net
+
+networks:
+  agentic-net:
+    driver: bridge
+
+volumes:
+  qdrant_data:
+  mlflow_data:

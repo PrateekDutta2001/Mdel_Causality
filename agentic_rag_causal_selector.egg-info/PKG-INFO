@@ -1,3 +1,37 @@
+Metadata-Version: 2.4
+Name: agentic-rag-causal-selector
+Version: 0.1.0
+Summary: Multi-agent LangGraph pipeline for ML model + hyperparameter recommendation via RAG and causal inference
+Author: Agentic RAG Team
+License: MIT
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: fastapi>=0.115.0
+Requires-Dist: uvicorn[standard]>=0.32.0
+Requires-Dist: pydantic>=2.9.0
+Requires-Dist: pydantic-settings>=2.6.0
+Requires-Dist: langgraph>=0.2.0
+Requires-Dist: langchain-core>=0.3.0
+Requires-Dist: openai>=1.54.0
+Requires-Dist: anthropic>=0.39.0
+Requires-Dist: qdrant-client>=1.12.0
+Requires-Dist: sentence-transformers>=3.3.0
+Requires-Dist: dowhy>=0.11.0
+Requires-Dist: econml>=0.15.0
+Requires-Dist: optuna>=4.0.0
+Requires-Dist: mlflow>=2.18.0
+Requires-Dist: huggingface-hub>=0.26.0
+Requires-Dist: networkx>=3.4.0
+Requires-Dist: pandas>=2.2.0
+Requires-Dist: numpy>=1.26.0
+Requires-Dist: httpx>=0.27.0
+Requires-Dist: python-dotenv>=1.0.0
+Provides-Extra: dev
+Requires-Dist: pytest>=8.3.0; extra == "dev"
+Requires-Dist: pytest-asyncio>=0.24.0; extra == "dev"
+Requires-Dist: pytest-mock>=3.14.0; extra == "dev"
+Requires-Dist: httpx>=0.27.0; extra == "dev"
+
 # Agentic RAG Causal Selector
 
 A production-grade FastAPI service that recommends a **pretrained model checkpoint** and **hyperparameter configuration** for a given ML task. Recommendations are grounded in:

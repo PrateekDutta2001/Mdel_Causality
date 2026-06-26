@@ -1,0 +1,16 @@
+architecture,dataset_size,learning_rate,batch_size,optimizer,num_epochs,hardware_type,final_metric
+resnet18,10000,0.001,32,adam,10,gpu,0.82
+resnet18,10000,0.0001,64,adamw,20,gpu,0.85
+resnet34,50000,0.001,128,adam,15,gpu,0.88
+bert-base,50000,0.00005,16,adamw,5,gpu,0.91
+bert-base,50000,0.00001,8,adamw,10,gpu,0.89
+distilbert,10000,0.0001,32,adam,8,gpu,0.87
+distilbert,10000,0.001,64,sgd,12,cpu,0.78
+gpt2-small,100000,0.0001,8,adamw,3,gpu,0.76
+gpt2-small,100000,0.00005,16,adamw,5,gpu,0.79
+resnet50,50000,0.0005,64,adam,25,gpu,0.90
+resnet50,50000,0.0001,32,rmsprop,20,gpu,0.86
+vit-base,50000,0.00003,32,adamw,12,gpu,0.92
+vit-base,10000,0.0001,16,adam,8,gpu,0.84
+lstm,10000,0.001,128,sgd,30,cpu,0.71
+lstm,50000,0.0005,64,adam,20,gpu,0.80
